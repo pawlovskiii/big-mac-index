@@ -3,13 +3,13 @@ import requests
 import json
 
 
-metadata = pd.read_csv(r"ECONOMIST_metadata.csv")
+metadata = pd.read_csv(r"../ECONOMIST_metadata.csv")
 countryCodeList = metadata["code"].tolist()
 
 
 def json_to_csv(data, countryCode):
     read_data = pd.read_json(data)
-    read_data.to_csv(rf"bigmac_index/{countryCode}.csv", index=False)
+    read_data.to_csv(rf"../bigmac_index/{countryCode}.csv", index=False)
 
 
 def get_data():
