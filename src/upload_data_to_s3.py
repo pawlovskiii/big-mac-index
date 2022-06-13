@@ -5,10 +5,10 @@ import boto3
 s3 = boto3.client("s3")
 
 
-def upload_data(config, countryCode: str) -> str:
+def upload_data(PATH, countryCode: str) -> str:
     s3.upload_file(
-        Filename=f"{config['DEFAULT']['path']}{countryCode}.csv",
+        Filename=f"{PATH}{countryCode}.csv",
         Bucket="nasdaq-data-bucket",
-        Key=f"{config['DEFAULT']['path']}{countryCode}.csv",
+        Key=f"{PATH}{countryCode}.csv",
     )
     print(f"{countryCode}.csv uploaded successfully!")

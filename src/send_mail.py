@@ -1,2 +1,2 @@
-def post_mail(config):
-    print(config["DEFAULT"]["mail"])
+def post_mail(MAIL):
+    print(MAIL)
