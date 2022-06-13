@@ -2,10 +2,8 @@ import pandas as pd
 import requests
 import json
 import boto3
+from src.extract_metadata import countryCodeList
 
-
-metadata = pd.read_csv(r"ECONOMIST_metadata.csv")
-countryCodeList = metadata["code"].tolist()
 
 # Create an S3 access object
 s3 = boto3.client("s3")
