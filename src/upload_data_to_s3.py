@@ -8,7 +8,7 @@ config.read("config.ini")
 s3 = boto3.client("s3")
 
 
-def upload_data(countryCode):
+def upload_data(countryCode: str) -> str:
     s3.upload_file(
         Filename=f"{config['DEFAULT']['path']}{countryCode}.csv",
         Bucket="nasdaq-data-bucket",
