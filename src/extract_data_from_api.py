@@ -9,7 +9,7 @@ config.read("config.ini")
 
 
 def extract_data_from_api():
-    for countryCode in countryCodeList[60:]:
+    for countryCode in countryCodeList[70:]:
         response = requests.get(
             f"https://data.nasdaq.com/api/v3/datasets/ECONOMIST/{countryCode}?api_key={config['DEFAULT']['api_key']}"
         )
