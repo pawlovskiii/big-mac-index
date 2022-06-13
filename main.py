@@ -13,12 +13,13 @@ def main() -> None:
     API_KEY = config["DEFAULT"]["api_key"]
     PATH = config["DEFAULT"]["path"]
     MAIL = config["DEFAULT"]["mail"]
+    BUCKET = config["DEFAULT"]["bucket"]
 
     # Extract data from API
     for countryCode in get_country_code():
         response = requests.get(f"https://data.nasdaq.com/api/v3/datasets/ECONOMIST/{countryCode}?api_key={API_KEY}")
         save_data_local(PATH, response, countryCode)
-        upload_data_to_s3(PATH, countryCode)
+        upload_data_to_s3(PATH, BUCKET, countryCode)
 
     post_mail(MAIL)
 
