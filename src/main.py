@@ -1,8 +1,8 @@
-from get_data_from_api import get_data
+from upload_data_to_s3 import extract_data_from_api
 
 
 def main():
-    get_data()
+    extract_data_from_api()
 
 
 if __name__ == "__main__":
