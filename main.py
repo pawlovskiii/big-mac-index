@@ -1,16 +1,7 @@
 import pandas as pd
 import requests
-import json
 from src.extract_metadata import countryCodeList
-from src.upload_data_to_s3 import upload_data
-
-
-def json_to_csv(response, countryCode):
-    data = json.dumps(response.json())
-    read_data = pd.read_json(data)
-    read_data.to_csv(rf"bigmac_index/{countryCode}.csv", index=False)
-    print(f"{countryCode} saved successfully!")
-    upload_data(countryCode)
+from src.local_storage import save_data_local
 
 
 def extract_data_from_api():
@@ -18,7 +9,8 @@ def extract_data_from_api():
         response = requests.get(
             f"https://data.nasdaq.com/api/v3/datasets/ECONOMIST/{countryCode}?api_key=Hy29GkkAwX2gVmj1wpLh"
         )
-        json_to_csv(response, countryCode)
+        save_data_local(response, countryCode)
+
 
 def main():
     extract_data_from_api()
