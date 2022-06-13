@@ -1,11 +1,7 @@
-import boto3
+from botocore.client import BaseClient
 
 
-# Create an S3 access object
-s3 = boto3.client("s3")
-
-
-def upload_data_to_s3(PATH: str, BUCKET: str, countryCode: str) -> None:
+def upload_data_to_s3(PATH: str, BUCKET: str, countryCode: str, s3: BaseClient) -> None:
     s3.upload_file(
         Filename=f"{PATH}{countryCode}.csv",
         Bucket=BUCKET,

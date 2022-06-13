@@ -1,4 +1,5 @@
 import requests
+import boto3
 from configparser import ConfigParser
 from src.send_mail import post_mail
 from src.extract_metadata import get_country_code
@@ -15,11 +16,14 @@ def main() -> None:
     MAIL = config["DEFAULT"]["mail"]
     BUCKET = config["DEFAULT"]["bucket"]
 
+    # Create an S3 access object
+    s3 = boto3.client("s3")
+
     # Extract data from API
     for countryCode in get_country_code():
         response = requests.get(f"https://data.nasdaq.com/api/v3/datasets/ECONOMIST/{countryCode}?api_key={API_KEY}")
         save_data_local(PATH, response, countryCode)
-        upload_data_to_s3(PATH, BUCKET, countryCode)
+        upload_data_to_s3(PATH, BUCKET, countryCode, s3)
 
     post_mail(MAIL)
 
