@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 import json
 from src.extract_metadata import countryCodeList
-from src.upload_data import upload_data
+from src.upload_data_to_s3 import upload_data
 
 
 def json_to_csv(response, countryCode):
