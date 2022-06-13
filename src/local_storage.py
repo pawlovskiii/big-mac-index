@@ -1,10 +1,7 @@
 import json
 import pandas as pd
-import requests
+from requests import Response
 from src.upload_data_to_s3 import upload_data
-
-
-Response = requests.models.Response
 
 
 def save_data_local(PATH: str, response: Response, countryCode: str) -> None:
