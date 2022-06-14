@@ -22,7 +22,7 @@ These are the crucial steps to configuring and running the project.
 $ mkdir bigmac_index
 
 # To download all the necessarily Python packages needed for the project
-$ pip install -r requirements
+$ pip install -r requirements.txt
 ```
 
 ### Run the project
