@@ -1,10 +1,14 @@
+import csv
 import json
 import pandas as pd
 from requests import Response
 
 
 def save_data_local(PATH: str, response: Response, countryCode: str) -> None:
-    data = json.dumps(response.json())
-    read_data = pd.read_json(data)
-    read_data.to_csv(rf"{PATH}{countryCode}.csv", index=False)
+    url_content = response.content
+
+    csv_file = open(f"{PATH}{countryCode}.csv", "wb")
+    csv_file.write(url_content)
+    csv_file.close()
+
     print(f"{countryCode} saved successfully!")

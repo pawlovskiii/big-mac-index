@@ -21,7 +21,9 @@ def main() -> None:
 
     # Extract data from API
     for countryCode in get_country_code():
-        response = requests.get(f"https://data.nasdaq.com/api/v3/datasets/ECONOMIST/{countryCode}?api_key={API_KEY}")
+        response = requests.get(
+            f"https://data.nasdaq.com/api/v3/datasets/ECONOMIST/{countryCode}.csv?api_key={API_KEY}"
+        )
         save_data_local(PATH, response, countryCode)
         upload_data_to_s3(PATH, BUCKET, countryCode, s3)
 
