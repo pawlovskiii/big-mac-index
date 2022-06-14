@@ -13,8 +13,11 @@ def main() -> None:
 
     API_KEY = config["DEFAULT"]["api_key"]
     PATH = config["DEFAULT"]["path"]
-    MAIL = config["DEFAULT"]["mail"]
     BUCKET = config["DEFAULT"]["bucket"]
+
+    HOST_CODE = config["DEFAULT"]["host_code"]
+    SENDER = config["DEFAULT"]["sender"]
+    RECEIVER = config["DEFAULT"]["receiver"]
 
     # Create an S3 access object
     s3 = boto3.client("s3")
@@ -27,7 +30,7 @@ def main() -> None:
         save_data_local(PATH, response, countryCode)
         upload_data_to_s3(PATH, BUCKET, countryCode, s3)
 
-    post_mail(MAIL)
+    post_mail(HOST_CODE, SENDER, RECEIVER)
 
 
 if __name__ == "__main__":
