@@ -1,2 +1,2 @@
-def post_mail(MAIL: str) -> str:
+def post_mail(MAIL: str) -> None:
     print(MAIL)
