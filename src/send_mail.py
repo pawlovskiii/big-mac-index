@@ -14,7 +14,7 @@ def post_mail(HOST_CODE: str, SENDER: str, RECEIVER: str) -> None:
     server = smtplib.SMTP(HOST_CODE, 587)
     server.starttls()
 
-    password = prompt("Type password to sender's mail: ")
+    password: str = prompt("Type password to sender's mail: ")
     server.login(SENDER, password)
 
     server.sendmail(SENDER, RECEIVER, message)

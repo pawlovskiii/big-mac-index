@@ -2,7 +2,7 @@ from requests import Response
 
 
 def save_data_local(PATH: str, response: Response, countryCode: str) -> None:
-    url_content = response.content
+    url_content: bytes = response.content
 
     csv_file = open(f"{PATH}{countryCode}.csv", "wb")
     csv_file.write(url_content)
