@@ -9,11 +9,14 @@
 
 ## General info
 
-The whole project consists of several steps.
+Brief project information:
 
-1. Download data from [The Economist - Big Mac Index](https://data.nasdaq.com/data/ECONOMIST-the-economist-big-mac-index/usage/quickstart/api) and save it on AWS S3.
-2. Implement email notification within Python script that data is in S3.
-3. Data visualization within PowerBI with the top 5 countries with the highest Big Mac index in July 2021.
+- Extracted country codes from the CSV file to nextly use them in requests to API to obtain data from [The Economist - Big Mac Index](https://data.nasdaq.com/data/ECONOMIST-the-economist-big-mac-index/usage/quickstart/api)
+- Saved data locally to make data visualization within PowerBI with the top 5 countries with the highest Big Mac index in July
+  2021
+- Uploaded the data to AWS S3 within the boto3 client. Implemented email notification that data is in S3
+- The whole application is divided into separate modules to group related code to make it easier to understand and use. Everything
+  executes in the main.py file which imports functionality from the scripts from the src folder
 
 ## Setup
 
